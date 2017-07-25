@@ -50,6 +50,7 @@ The syntax is shown below as BNF.
 		| PRINTLN  '(' STRING ',' expr ')'
 
 --
+
 	number:= (digit) {0|digit}*
 
 	digit:= 1|..| 9
@@ -72,6 +73,7 @@ The syntax is shown below as BNF.
 	}
 
 --
+
 	var A[10];
 	main()
 	{
