@@ -12,7 +12,7 @@
     <ProjectGuid>919ccec9-6c86-4496-98a8-c14d25b1243c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>app.ts</StartupFile>
+    <StartupFile>src\app.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -45,15 +45,16 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="src\app.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
-    <TypeScriptCompile Include="tinyParser.ts">
+    <TypeScriptCompile Include="src\tinyParser.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />
