@@ -1,0 +1,9 @@
+{
+  "name": "type-script-first",
+  "version": "0.0.0",
+  "description": "TypeScriptFirst",
+  "main": "app.js",
+  "author": {
+    "name": "Takenouchi"
+  }
+}
