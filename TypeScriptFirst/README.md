@@ -51,11 +51,12 @@ The syntax is shown below as BNF.
 
 --
 
+
 	number:= (digit) {0|digit}*
 
 	digit:= 1|..| 9
 
-	string:= '"' char {char}* '"'
+	string:= '"' char {char|number}* '"'
 
 	char:= a|b|..|z|A|B|..|Z
 
@@ -66,13 +67,14 @@ The syntax is shown below as BNF.
 	    s = 0;
 	    i = 0; 
 	    while(i < 10){
-	    	    s =	s +	i;
+	      	s = s + i;
 		    i = i + 1;
 	    }
 	    println("s = %d",s);
 	}
 
 --
+
 
 	var A[10];
 	main()

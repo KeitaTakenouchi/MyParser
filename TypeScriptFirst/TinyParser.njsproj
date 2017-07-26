@@ -46,10 +46,17 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app.ts" />
+    <Content Include="foo.tiny" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
-    <TypeScriptCompile Include="src\tinyParser.ts">
+    <TypeScriptCompile Include="src\parser.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\scanner.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\types.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
