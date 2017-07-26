@@ -261,4 +261,5 @@ __pycache__/
 *.pyc
 
 # my option
-src/*.js
+*/src/*.js
+*/src/*.js.map
