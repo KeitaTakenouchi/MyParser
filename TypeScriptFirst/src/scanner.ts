@@ -1,6 +1,6 @@
-﻿// Lexer 
-import { SyntaxKind, Token } from "./types";
+﻿import { Token, TokenKind } from "./types";
 
+// Lexer
 export class Scanner
 {
     private souce: string;
@@ -22,71 +22,71 @@ export class Scanner
         if (this.isEnd()) return undefined;
 
         let start = this.pos;
-        let kind: SyntaxKind;
+        let kind: TokenKind;
 
         switch (this.current())
         {
             case "{":
-                kind = SyntaxKind.OpenBraceToken;
+                kind = TokenKind.OpenBraceToken;
                 this.next();
                 break;
             case "}":
                 this.next();
-                kind = SyntaxKind.CloseBraceToken;
+                kind = TokenKind.CloseBraceToken;
                 break;
             case "(":
                 this.next();
-                kind = SyntaxKind.OpenParenToken;
+                kind = TokenKind.OpenParenToken;
                 break;
             case ")":
                 this.next();
-                kind = SyntaxKind.CloseParenToken;
+                kind = TokenKind.CloseParenToken;
                 break;
             case "[":
                 this.next();
-                kind = SyntaxKind.OpenBracketToken;
+                kind = TokenKind.OpenBracketToken;
                 break;
             case "]":
                 this.next();
-                kind = SyntaxKind.CloseBracketToken;
+                kind = TokenKind.CloseBracketToken;
                 break;
             case "=":
                 this.next();
-                kind = SyntaxKind.EqualsToken;
+                kind = TokenKind.EqualsToken;
                 break;
             case ";":
                 this.next();
-                kind = SyntaxKind.SemicolonToken;
+                kind = TokenKind.SemicolonToken;
                 break;
             case ",":
                 this.next();
-                kind = SyntaxKind.CommaToken;
+                kind = TokenKind.CommaToken;
                 break;
             case "+":
                 this.next();
-                kind = SyntaxKind.PlusToken;
+                kind = TokenKind.PlusToken;
                 break;
             case "-":
                 this.next();
-                kind = SyntaxKind.MinusToken;
+                kind = TokenKind.MinusToken;
                 break;
             case "*":
                 this.next();
-                kind = SyntaxKind.AsteriskToken;
+                kind = TokenKind.AsteriskToken;
                 break;
             case "<":
                 this.next();
-                kind = SyntaxKind.LessThanToken;
+                kind = TokenKind.LessThanToken;
                 break;
             case ">":
                 this.next();
-                kind = SyntaxKind.GreaterThanToken;
+                kind = TokenKind.GreaterThanToken;
                 break;
             case "\"":
                 this.next();
                 while (!this.isEnd() && this.current() != "\"") this.next();
                 this.next(); // consume the second "
-                kind = SyntaxKind.StringLiteral;
+                kind = TokenKind.StringLiteral;
                 break;
             default:
                 if (this.isAlphabet())
@@ -96,35 +96,35 @@ export class Scanner
 
                     // check keywords
                     let word: string = this.souce.substring(start, this.pos);
-                    kind = SyntaxKind.Identifier;
+                    kind = TokenKind.Identifier;
                     switch (word)
                     {
                         case "var":
-                            kind = SyntaxKind.VarKeyword;
+                            kind = TokenKind.VarKeyword;
                             break;
                         case "if":
-                            kind = SyntaxKind.IfKeyword;
+                            kind = TokenKind.IfKeyword;
                             break;
                         case "else":
-                            kind = SyntaxKind.ElseKeyword;
+                            kind = TokenKind.ElseKeyword;
                             break;
                         case "return":
-                            kind = SyntaxKind.ReturnKeyword;
+                            kind = TokenKind.ReturnKeyword;
                             break;
                         case "while":
-                            kind = SyntaxKind.WhileKeyword;
+                            kind = TokenKind.WhileKeyword;
                             break;
                         case "for":
-                            kind = SyntaxKind.ForKeyword;
+                            kind = TokenKind.ForKeyword;
                             break;
                     }
                 }
                 else if (this.isNumeric())
                 {
                     this.next();
-                    while (!this.isEnd() && this.isNumeric())this.next();
+                    while (!this.isEnd() && this.isNumeric()) this.next();
                     if (this.isAlphabet()) this.throwSyntaxError();
-                    kind = SyntaxKind.NumericLiteral;
+                    kind = TokenKind.NumericLiteral;
                 }
                 else
                 {
@@ -183,3 +183,4 @@ export class Scanner
     }
 
 }
+

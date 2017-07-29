@@ -10,10 +10,20 @@ http://www.hpcs.cs.tsukuba.ac.jp/~msato/lecture-note/comp-lecture/tiny-c-note1.h
 The syntax is shown below as BNF.
 
     program ::=  {external_definition}*
+
     external_definition:= 
+    	function_definition
+		| variable_definition
+		| array_definition
+
+	function_definition	:=
 	    function_name '(' [ parameter {',' parameter}* ] ')'  compound_statement
-		| VAR variable_name ['=' expr] ';'
-		| VAR array_name '[' expr ']' ';'
+
+	variable_definition :=
+		VAR	variable_name ['=' expr] ';'
+
+    array_definition :=
+    	VAR array_reference ';'	
 
 	compound_statement:= 
 		 '{' [local_variable_declaration] {statement}* '}'
@@ -22,32 +32,73 @@ The syntax is shown below as BNF.
 		VAR variable_name [ {',' variable_name}* ] ';'
 
 	statement :=
-		 expr ';'
+          assignment_statement
 		| compound_statement
-		| IF '(' expr ')' statement [ ELSE statement ]
-		| RETURN [expr] ';'
-		| WHILE '(' expr ')' statement
-		| FOR '(' expr ';' expr ';' expr ')' statement
+		| if_statement
+		| return_statement
+		| while_statement
+		| for_statement
+        | print
+
+    assignment_statement := 
+          assignment ';'
+
+    if_statement :=		  
+          IF '(' expr ')' statement [ ELSE statement ]
+
+    return_statement :=
+          RETURN [expr] ';'
+
+    while_statement :=
+          WHILE '(' expr ')' statement	
+		  
+    for_statement :=
+          FOR '(' expr ';' expr ';' assignment ')' statement	
+
+    assignment :=
+          variable_assignment
+        | array_assignment
+
+    variable_assignment :=
+          variable_name '=' expr
+
+    array_assignment :=
+          array_reference '=' expr	
 
 	expr:= 	 
 		  primary_expr
-		| variable_name '=' expr
-		| array_name '[' expr ']' '=' expr
-		| expr '+' expr
-		| expr '-' expr
-		| expr '*' expr
-		| expr '<' expr
-		| expr '>' expr
+		| arith_expr
 
 	primary_expr:=
 		  variable_name
 		| number
 		| STRING
-		| array_name '[' expr ']'
-		| function_name '(' expr [{',' expr}*] ')'
-		| function_name '(' ')'
-		| '(' expr ')'
-		| PRINTLN  '(' STRING ',' expr ')'
+		| array_reference
+		| function_call
+		| function_call_without_args
+		| paren_expr 
+
+    array_reference :=
+          array_name '[' expr ']'
+
+    function_call := 
+          function_name '(' expr [{',' expr}*] ')'
+
+    function_call_without_args := 
+	      function_name '(' ')'
+
+    paren_expr :=
+          '(' expr ')'
+
+    print :=
+        PRINTLN  '(' STRING ',' expr ')'
+
+	arith_expr :=
+          expr '+' expr
+		| expr '-' expr
+		| expr '*' expr
+		| expr '<' expr
+		| expr '>' expr	
 
 --
 
