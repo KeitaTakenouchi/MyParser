@@ -32,13 +32,13 @@ The syntax is shown below as BNF.
 		VAR variable_name [ {',' variable_name}* ] ';'
 
 	statement :=
-          assignment_statement
+    	assignment_statement
 		| compound_statement
 		| if_statement
 		| return_statement
 		| while_statement
 		| for_statement
-        | print
+		| print
 
     assignment_statement := 
           assignment ';'

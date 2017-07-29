@@ -209,23 +209,23 @@
         }
     }
 
-    // [0] : expression
+    // [0] : assignment
     // [1] : expression
     // [2] : assignment
     // [3] : statement
     export class ForStatementNode extends StatementNode
     {
-        getFirstExpression(): ExpressionNode
+        getFirstAssignment(): AssignmentNode
         {
             return this.children[0] as ExpressionNode;
         }
 
-        getSecondExpression(): ExpressionNode
+        getExpression(): ExpressionNode
         {
             return this.children[1] as ExpressionNode;
         }
 
-        getAssignment(): AssignmentNode
+        getSecondAssignment(): AssignmentNode
         {
             return this.children[2] as AssignmentNode;
         }

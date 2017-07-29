@@ -1,24 +1,18 @@
-﻿import { Scanner } from "./scanner";
-import { Token, ProgramNode, StringLiteralNode } from "./types";
+﻿import { Token, ProgramNode, StringLiteralNode, TokenKind } from "./types";
+import { Lexer } from "./lexer";
 
     let fs = require('fs');
     let filename = "foo.tiny";
     let source: string = fs.readFileSync(filename, "UTF-8");
-    let scanner = new Scanner(source);
 
     try
     {
-        let token: Token;
-        while (token = scanner.scan())
-        {
-            console.log(token);
-        }
-        console.log("TOKENIZING FINISHED.");
+        let lexer = new Lexer(source);
+        let list = lexer.tokenize();
+        console.log(list);
     }
     catch (e) // catch syntax error
     {
         console.log(e.message);
     }
 
-    let list = ["tom", "bob", "mary"];
-    let node = new StringLiteralNode();

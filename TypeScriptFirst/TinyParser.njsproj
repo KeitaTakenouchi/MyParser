@@ -53,7 +53,7 @@
     <TypeScriptCompile Include="src\ast.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\scanner.ts">
+    <TypeScriptCompile Include="src\lexer.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\types.ts">

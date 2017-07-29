@@ -1,22 +1,28 @@
 ﻿import { Token, TokenKind } from "./types";
 
-// Lexer
-export class Scanner
+export class Lexer
 {
     private souce: string;
-    private pos: number;
+    private pos: number = 0;
     private line: number = 1;
 
     constructor(souceCode: string)
     {
         this.souce = souceCode;
-        this.pos = 0;
     }
 
-    // Return undefined if scanning is over.
-    public scan(): Token
+    tokenize(): Token[]
     {
-        // skip white spaces
+        let tokens: Token[] = [];
+        let t: Token;
+        while (t = this.scan())
+            tokens.push(t);
+
+        return tokens;
+    }
+
+    private scan(): Token
+    {
         while (!this.isEnd() && this.isSpace()) this.next();
 
         if (this.isEnd()) return undefined;
