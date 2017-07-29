@@ -12,7 +12,6 @@ export class AST
     }
 }
 
-
 // Parser
 export class AstFactory
 {
@@ -123,14 +122,14 @@ export class AstFactory
     private parseArrayDefinition(): t.ArrayDefinitionNode
     {
         let tmpPos = this.pos;
-        let arrayReferenceNode: t.ArrayReferenceNode;
+        let arrayRefNode: t.ArrayReferenceNode;
 
         if ((this.expectKeyword(t.TokenKind.VarKeyword))
-            && (arrayReferenceNode = this.parseArrayReference())
+            && (arrayRefNode = this.parseArrayReference())
             && (this.expectKeyword(t.TokenKind.SemicolonToken)))
         {
             let node = new t.ArrayDefinitionNode();
-            this.connectNodes(node, 0, arrayReferenceNode);
+            this.connectNodes(node, 0, arrayRefNode);
             return node;
         }
         else
