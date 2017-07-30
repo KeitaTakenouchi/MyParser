@@ -38,7 +38,7 @@ The syntax is shown below as BNF.
 		| return_statement
 		| while_statement
 		| for_statement
-		| print
+		| print_statement
 
     assignment_statement := 
           assignment ';'
@@ -54,6 +54,9 @@ The syntax is shown below as BNF.
 		  
     for_statement :=
           FOR '(' expr ';' expr ';' assignment ')' statement	
+
+    print_statement :=
+        PRINTLN  '(' STRING ',' expr ')'
 
     assignment :=
           variable_assignment
@@ -89,9 +92,6 @@ The syntax is shown below as BNF.
 
     paren_expr :=
           '(' expr ')'
-
-    print :=
-        PRINTLN  '(' STRING ',' expr ')'
 
 	arith_expr :=
           expr '+' expr

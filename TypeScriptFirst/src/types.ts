@@ -53,7 +53,7 @@
     export abstract class ASTNode
     {
         parent: ASTNode;
-        children: ASTNode[];
+        children: ASTNode[]  = [];
 
         ifLeaf(): boolean
         {
